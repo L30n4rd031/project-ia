@@ -14,7 +14,7 @@ public class Labirinto {
 	/* Valores
 	 * S - Sujo
 	 * L - Limpo
-	 * *A* - Agente
+	 * *A^n* - Agente
 	 */
 	
 	public Labirinto(int tamanhoLabirinto) {
@@ -34,24 +34,29 @@ public class Labirinto {
 	
 	public void exibirLabirinto() {
 		atualizarPosicaoAgente();
+
 		for (int i = 0; i < tamanhoLabirinto; i++) {
 			for (int j = 0; j < tamanhoLabirinto; j++) {
-				if (labirinto[i][j].equals("*A*")) {
+				String nomeAgente = (this.agente != null ? this.agente.getNomeAgente() : "");
+
+				if (labirinto[i][j].equals(nomeAgente)) {
 					System.out.print("|" + labirinto[i][j] + "|");
 				} else {
 					System.out.print("| " + labirinto[i][j] + " |");
 				}
 				
 			}
+
 			System.out.println("");
 		}
+
 		System.out.println("");
 	}
 
 	private void atualizarPosicaoAgente() {
 		if (this.agente != null) {
 			PosicaoXY posAgente = this.agente.getPosicao();
-			labirinto[posAgente.getPosX()][posAgente.getPosY()] = "*A*";
+			labirinto[posAgente.getPosX()][posAgente.getPosY()] = this.agente.getNomeAgente();
 		}
 	}
 
@@ -71,6 +76,19 @@ public class Labirinto {
 	public void limpar() {
 		PosicaoXY posicao = this.agente.getPosicao();
 		labirinto[posicao.getPosX()][posicao.getPosY()] = "L";
+	}
+
+	public boolean isAgentesAindaLimpando(AgenteLabirinto[] agentes) {
+
+		int countCheck = 0;
+
+		for (AgenteLabirinto agente : agentes) {
+			if(agente.isAindaLimpando()) {
+				countCheck++;
+			}				
+		}	
+
+		return countCheck > 0 ? true : false;
 	}
 	
 }

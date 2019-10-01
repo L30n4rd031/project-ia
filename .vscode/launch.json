@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - InteligencaArtificial",
+            "request": "launch",
+            "mainClass": "principal.InteligencaArtificial",
+            "projectName": "InteligenciaArtificial_Java"
+        }
+    ]
+}

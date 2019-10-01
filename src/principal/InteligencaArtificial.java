@@ -10,16 +10,29 @@ public class InteligencaArtificial {
 		
 		Labirinto labirinto = new Labirinto(4);	
 		labirinto.exibirLabirinto();
-		
-		AgenteLabirinto agente = new AgenteLabirinto(labirinto);
-		agente.setPosicao(new PosicaoXY(2,2));
 
-		while(agente.isAindaLimpando()) {
-			agente.zerarPilha();
-			agente.movimentar(); 
-			labirinto.exibirLabirinto();
-			Thread.sleep(1500);
+		AgenteLabirinto[] agentes = new AgenteLabirinto[2];
+
+		for (int i = 0; i < agentes.length; i++) {			
+			agentes[i] = new AgenteLabirinto();
+			agentes[i].setNomeAgente("*A"+(1+i)+"*");
+			agentes[i].setPosicao(new PosicaoXY(i, i));
 		}
+				
+		while(labirinto.isAgentesAindaLimpando(agentes)) {
+
+			for (AgenteLabirinto agente : agentes) {
+				agente.setLabirinto(labirinto);	
+
+				agente.zerarPilha();
+				agente.movimentar(); 	
+				
+				labirinto.exibirLabirinto();
+				Thread.sleep(1500);	
+			}		
+
+		}
+			
 		return;
 	}
 
