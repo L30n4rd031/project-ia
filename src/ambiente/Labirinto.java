@@ -25,6 +25,7 @@ public class Labirinto {
 	// Construir o labirinto
 	private void construirNovoLabirinto() {
 		labirinto = new String[this.tamanhoLabirinto][this.tamanhoLabirinto];
+
 		for (int i = 0; i < this.tamanhoLabirinto; i++) {
 			for (int j = 0; j < this.tamanhoLabirinto; j++) {
 				this.labirinto[i][j] = "S";
@@ -33,10 +34,11 @@ public class Labirinto {
 	}
 	
 	public void exibirLabirinto() {
-		atualizarPosicaoAgente();
+		this.atualizarPosicaoAgente();
 
 		for (int i = 0; i < tamanhoLabirinto; i++) {
 			for (int j = 0; j < tamanhoLabirinto; j++) {
+				
 				String nomeAgente = (this.agente != null ? this.agente.getNomeAgente() : "");
 
 				if (labirinto[i][j].equals(nomeAgente)) {

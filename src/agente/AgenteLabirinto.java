@@ -36,13 +36,13 @@ public class AgenteLabirinto {
 			return;
 		}
 
-		PosicaoXY proximoMovimento = retornarMovimento();
+		PosicaoXY proximoMovimento = this.retornarMovimento();
 		String valor = this.labirinto.retornarValorPosicaoLabirinto(proximoMovimento);
 		
 		if (valor.equals("L") || valor.equals(this.nomeAgente)) {
-			proximoMovimento();
-			aumentarPilha();
-			movimentar();
+			this.proximoMovimento();
+			this.aumentarPilha();
+			this.movimentar();
 		} else {
 			this.labirinto.limpar();
 			this.posXY = proximoMovimento;
